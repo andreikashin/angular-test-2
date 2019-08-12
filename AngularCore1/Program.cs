@@ -14,6 +14,7 @@ namespace AngularCore1
     {
         public static void Main(string[] args)
         {
+            AppContext.SetSwitch("System.Net.Http.UseSocketsHttpHandler", false);
             CreateWebHostBuilder(args).Build().Run();
         }
 
