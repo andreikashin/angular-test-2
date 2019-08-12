@@ -37,6 +37,7 @@ namespace AngularCore1
             }
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseMvc();
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
