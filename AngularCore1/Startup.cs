@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AngularCore1.Models;
@@ -38,6 +39,24 @@ namespace AngularCore1
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseMvc();
+
+            // обработка маршрутов, которые не сопоставлены с ресурсам ранее
+            app.Run(async (context) =>
+            {
+                context.Response.ContentType = "text/html";
+                await context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
+            });
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+
+            //    routes.MapSpaFallbackRoute("angular-fallback",
+            //        new { controller = "Home", action = "Index" });
+            //});
+
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
