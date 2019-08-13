@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
             this.dataService.createProduct(this.product)
                 .subscribe((data: HttpResponse<Product>) => {
                     console.log(data);
+                    console.log(data.headers.get("content-type"));
                     this.products.push(data.body);
                 });
         } else {
